@@ -189,6 +189,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animal.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameDlg.h" />
     <ClInclude Include="Human.h" />
@@ -199,6 +200,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animal.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameDlg.cpp" />
     <ClCompile Include="Human.cpp" />

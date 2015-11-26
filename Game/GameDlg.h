@@ -5,6 +5,7 @@
 #pragma once
 #include"Human.h"
 #include"Scenery.h"
+#include "Animal.h"
 
 // CGameDlg 对话框
 class CGameDlg : public CDialogEx
@@ -20,7 +21,9 @@ public:
 	HDC t_hDc;
 	HDC buffer_hdc;
 	CHuman human;
+	CAnimal animal[100];
 	CScenery scenery[97];
+
 // 构造
 public:
 	CGameDlg(CWnd* pParent = NULL);	// 标准构造函数
