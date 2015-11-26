@@ -10,7 +10,8 @@
 class CGameDlg : public CDialogEx
 {
 public:
-	int scenery_chose[7];
+	int scenery_chose[97];
+	int scenery_number;
 	CClientDC *dc;
 	HBITMAP h_person[800];
 	HBITMAP h_land;
@@ -60,4 +61,5 @@ public:
 	void human_stand(int last_state, DIBSECTION ds);
 	void paint_behind_human();
 	void paint_before_human();
+	afx_msg void OnBnClickedButton1();
 };

@@ -1,9 +1,13 @@
-﻿生成启动时间为 2015/11/26 16:02:48。
+﻿生成启动时间为 2015/11/26 16:25:22。
      1>项目“E:\Game\Game\Game.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         D:\VS2015\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\Game.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt GameDlg.cpp
+         D:\VS2015\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\Game.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp GameDlg.cpp
+         Game.cpp
+         正在生成代码...
+         正在编译...
          GameDlg.cpp
-     1>e:\game\game\gamedlg.cpp(124): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+     1>e:\game\game\gamedlg.cpp(126): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+         正在生成代码...
        Link:
          D:\VS2015\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Game\Debug\Game.exe" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:D:\VS2015\VC\Include\Manifest\dpiaware.manifest /Debug /PDB:"E:\Game\Debug\Game.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Game\Debug\Game.lib" /MACHINE:X86 Debug\Game.res
          Debug\Game.obj
@@ -17,4 +21,4 @@
 
 已成功生成。
 
-已用时间 00:00:00.60
+已用时间 00:00:00.57

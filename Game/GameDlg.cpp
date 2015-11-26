@@ -71,6 +71,7 @@ BEGIN_MESSAGE_MAP(CGameDlg, CDialogEx)
 	ON_BN_CLICKED(IDCANCEL, &CGameDlg::OnBnClickedCancel)
 	ON_WM_TIMER()
 	ON_WM_RBUTTONDOWN()
+	ON_BN_CLICKED(IDC_BUTTON1, &CGameDlg::OnBnClickedButton1)
 END_MESSAGE_MAP()
 
 
@@ -111,6 +112,7 @@ BOOL CGameDlg::OnInitDialog()
 	buffer_hdc = CreateCompatibleDC(NULL);
 	h_temp_bitmap = CreateCompatibleBitmap(*dc, 640, 480);
 	SelectObject(buffer_hdc, h_temp_bitmap);
+	scenery_number = 0;
 
 	for (int i = 0; i < 800; i++)
 	{
@@ -143,7 +145,7 @@ BOOL CGameDlg::OnInitDialog()
 	human.dis_y = 0;
 	human.state = 8;
 
-	for (int i = 0; i < 7; i++)
+	for (int i = 0; i < 96; i++)
 	{
 		scenery_chose[i] = rand() % 96;
 	}
@@ -322,7 +324,7 @@ void CGameDlg::human_stand(int last_state, DIBSECTION ds)
 
 void CGameDlg::paint_behind_human()
 {
-	for (int i = 0; i < 7; i++)
+	for (int i = 0; i < scenery_number; i++)
 	{
 		DIBSECTION ds_temp;
 		BITMAPINFOHEADER &bm = ds_temp.dsBmih;
@@ -337,7 +339,7 @@ void CGameDlg::paint_behind_human()
 
 void CGameDlg::paint_before_human()
 {
-	for (int i = 0; i < 7; i++)
+	for (int i = 0; i < scenery_number; i++)
 	{
 		DIBSECTION ds_temp;
 		BITMAPINFOHEADER &bm = ds_temp.dsBmih;
@@ -348,4 +350,10 @@ void CGameDlg::paint_before_human()
 		if (scenery[scenery_chose[i]].y + iHeight >= human.now_y + 42)
 			TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
 	}
+}
+
+void CGameDlg::OnBnClickedButton1()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	scenery_number++;
 }

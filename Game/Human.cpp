@@ -90,7 +90,7 @@ void CHuman::Move()
 		{
 			state = NORTH;
 		}
-		if (SOUTH)
+		if (south)
 		{
 			state = SOUTH;
 		}
