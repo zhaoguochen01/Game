@@ -227,617 +227,12 @@ void CGameDlg::OnTimer(UINT_PTR nIDEvent)
 	int iWidth = bm.biWidth;
 	int iHeight = bm.biHeight;
 	BitBlt(buffer_hdc, 0, 0, iWidth, iHeight, hDCBitmap, 0, 0, SRCCOPY);
-	/*for (int i = 0; i < 7; i++)
-	{
-		BITMAPINFOHEADER &bm = ds.dsBmih;
-		GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-		SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-		int iWidth = bm.biWidth;
-		int iHeight = bm.biHeight;
-		TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-	}*/
 	human.Move();
-	switch(human.state)
-	{
-		case SOUTH:
-		{	
-			for (int i = 0; i < 7; i++)
-			{
-				DIBSECTION ds;
-				BITMAPINFOHEADER &bm = ds.dsBmih;
-				GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-				SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				if (scenery[scenery_chose[i]].y + iHeight<human.now_y+42)
-				TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			}
-			GetObject(h_person[pic_num[0]], sizeof(ds), &ds);
-			SelectObject(hDCBitmap, h_person[pic_num[0]]);
-			TransparentBlt(buffer_hdc,human.now_x,human.now_y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			pic_num[0]++;
-			if (pic_num[0] == 50)
-			{
-				pic_num[0] = 40;
-			}
-			last_state = 0;
-			for (int i = 0; i < 7; i++)
-			{
-				DIBSECTION ds;
-				BITMAPINFOHEADER &bm = ds.dsBmih;
-				GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-				SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				if (scenery[scenery_chose[i]].y + iHeight>=human.now_y+42)
-				TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			}
-			break;
-		}
-		case SOUTH_WEST:
-		{	
-			for (int i = 0; i < 7; i++)
-			{
-				DIBSECTION ds;
-				BITMAPINFOHEADER &bm = ds.dsBmih;
-				GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-				SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				if (scenery[scenery_chose[i]].y + iHeight<human.now_y+42)
-				TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			}
-			GetObject(h_person[pic_num[1]], sizeof(ds), &ds);
-			SelectObject(hDCBitmap, h_person[pic_num[1]]);	
-			int iWidth = bm.biWidth;
-			int iHeight = bm.biHeight;
-			TransparentBlt(buffer_hdc,human.now_x, human.now_y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			pic_num[1]++;
-			if (pic_num[1] == 60)
-			{
-				pic_num[1] = 50;
-			}
-			last_state = 1;
-			for (int i = 0; i < 7; i++)
-			{
-				DIBSECTION ds;
-				BITMAPINFOHEADER &bm = ds.dsBmih;
-				GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-				SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				if (scenery[scenery_chose[i]].y + iHeight>=human.now_y+42)
-				TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			}
-			break;
-		}
-		case WEST:	
-		{
-			for (int i = 0; i < 7; i++)
-			{
-				DIBSECTION ds;
-				BITMAPINFOHEADER &bm = ds.dsBmih;
-				GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-				SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				if (scenery[scenery_chose[i]].y + iHeight<human.now_y+42)
-				TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			}
-			GetObject(h_person[pic_num[2]], sizeof(ds), &ds);
-			SelectObject(hDCBitmap, h_person[pic_num[2]]);
-			int iWidth = bm.biWidth;
-			int iHeight = bm.biHeight;
-			TransparentBlt(buffer_hdc, human.now_x, human.now_y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			pic_num[2]++;
-			if (pic_num[2] == 70)
-			{
-				pic_num[2] = 60;
-			}
-			last_state = 2;
-			for (int i = 0; i < 7; i++)
-			{
-				DIBSECTION ds;
-				BITMAPINFOHEADER &bm = ds.dsBmih;
-				GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-				SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				if (scenery[scenery_chose[i]].y + iHeight>=human.now_y+42)
-				TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			}
-			break;
-		}
-		case NORTH_WEST:
-		{
-			for (int i = 0; i < 7; i++)
-			{
-				DIBSECTION ds;
-				BITMAPINFOHEADER &bm = ds.dsBmih;
-				GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-				SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				if (scenery[scenery_chose[i]].y + iHeight<human.now_y+42)
-				TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			}
-			GetObject(h_person[pic_num[3]], sizeof(ds), &ds);
-			SelectObject(hDCBitmap, h_person[pic_num[3]]);
-			int iWidth = bm.biWidth;
-			int iHeight = bm.biHeight;
-			TransparentBlt(buffer_hdc, human.now_x, human.now_y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			pic_num[3]++;
-			if (pic_num[3] == 80)
-			{
-				pic_num[3] = 70;
-			}
-			last_state = 3;
-			for (int i = 0; i < 7; i++)
-			{
-				DIBSECTION ds;
-				BITMAPINFOHEADER &bm = ds.dsBmih;
-				GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-				SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				if (scenery[scenery_chose[i]].y + iHeight>=human.now_y+42)
-				TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			}
-			break;
-		}
-		case NORTH:
-		{
-			for (int i = 0; i < 7; i++)
-			{
-				DIBSECTION ds;
-				BITMAPINFOHEADER &bm = ds.dsBmih;
-				GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-				SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				if (scenery[scenery_chose[i]].y + iHeight<human.now_y+42)
-				TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			}
-			GetObject(h_person[pic_num[4]], sizeof(ds), &ds);
-			SelectObject(hDCBitmap, h_person[pic_num[4]]);
-			int iWidth = bm.biWidth;
-			int iHeight = bm.biHeight;
-			TransparentBlt(buffer_hdc, human.now_x, human.now_y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			pic_num[4]++;
-			if (pic_num[4] == 90)
-			{
-				pic_num[4] = 80;
-			}
-			last_state = 4;
-			for (int i = 0; i < 7; i++)
-			{
-				DIBSECTION ds;
-				BITMAPINFOHEADER &bm = ds.dsBmih;
-				GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-				SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				if (scenery[scenery_chose[i]].y + iHeight>=human.now_y+42)
-				TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			}
-			break;
-		}
-		case NORTH_EAST:	
-		{
-			for (int i = 0; i < 7; i++)
-			{
-				DIBSECTION ds;
-				BITMAPINFOHEADER &bm = ds.dsBmih;
-				GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-				SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				if (scenery[scenery_chose[i]].y + iHeight<human.now_y+42)
-				TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			}
-			GetObject(h_person[pic_num[5]], sizeof(ds), &ds);
-			SelectObject(hDCBitmap, h_person[pic_num[5]]);
-			int iWidth = bm.biWidth;
-			int iHeight = bm.biHeight;
-			TransparentBlt(buffer_hdc, human.now_x, human.now_y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			pic_num[5]++;
-			if (pic_num[5] == 100)
-			{
-				pic_num[5] = 90;
-			}
-			last_state = 5;
-			for (int i = 0; i < 7; i++)
-			{
-				DIBSECTION ds;
-				BITMAPINFOHEADER &bm = ds.dsBmih;
-				GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-				SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				if (scenery[scenery_chose[i]].y + iHeight>=human.now_y+42)
-				TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			}
-			break;
-		}
-		case EAST:	
-		{
-			for (int i = 0; i < 7; i++)
-			{
-				DIBSECTION ds;
-				BITMAPINFOHEADER &bm = ds.dsBmih;
-				GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-				SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				if (scenery[scenery_chose[i]].y + iHeight<human.now_y+42)
-				TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			}
-			GetObject(h_person[pic_num[6]], sizeof(ds), &ds);
-			SelectObject(hDCBitmap, h_person[pic_num[6]]);
-			int iWidth = bm.biWidth;
-			int iHeight = bm.biHeight;
-			TransparentBlt(buffer_hdc, human.now_x, human.now_y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			pic_num[6]++;
-			if (pic_num[6] == 110)
-			{
-				pic_num[6] = 100;
-			}
-			last_state = 6;
-			for (int i = 0; i < 7; i++)
-			{
-				DIBSECTION ds;
-				BITMAPINFOHEADER &bm = ds.dsBmih;
-				GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-				SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				if (scenery[scenery_chose[i]].y + iHeight>=human.now_y+42)
-				TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			}
-			break;
-		}
-		case SOUTH_EAST:	
-		{
-			for (int i = 0; i < 7; i++)
-			{
-				DIBSECTION ds;
-				BITMAPINFOHEADER &bm = ds.dsBmih;
-				GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-				SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				if (scenery[scenery_chose[i]].y + iHeight<human.now_y+42)
-				TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			}
-			GetObject(h_person[pic_num[7]], sizeof(ds), &ds);
-			SelectObject(hDCBitmap, h_person[pic_num[7]]);
-			int iWidth = bm.biWidth;
-			int iHeight = bm.biHeight;
-			TransparentBlt(buffer_hdc, human.now_x, human.now_y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			pic_num[7]++;
-			if (pic_num[7] == 120)
-			{
-				pic_num[7] = 110;
-			}
-			last_state = 7;
-			for (int i = 0; i < 7; i++)
-			{
-				DIBSECTION ds;
-				BITMAPINFOHEADER &bm = ds.dsBmih;
-				GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-				SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				if (scenery[scenery_chose[i]].y + iHeight>=human.now_y+42)
-				TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-			}
-			break;
-		}
-		case STAND:	
-		{
-			
-			switch (last_state)
-			{
-			case 0:
-			{
-				for (int i = 0; i < 7; i++)
-				{
-					DIBSECTION ds;
-					BITMAPINFOHEADER &bm = ds.dsBmih;
-					GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-					SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-					int iWidth = bm.biWidth;
-					int iHeight = bm.biHeight;
-					if (scenery[scenery_chose[i]].y + iHeight<human.now_y+42)
-					TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				}
-				GetObject(h_person[stand_pic_num[0]], sizeof(ds), &ds);
-				SelectObject(hDCBitmap, h_person[stand_pic_num[0]]);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				TransparentBlt(buffer_hdc, human.now_x, human.now_y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				stand_pic_num[0]++;
-				if (stand_pic_num[0] == 5)
-				{
-					stand_pic_num[0] = 0;
-				}
-				for (int i = 0; i < 7; i++)
-				{
-					DIBSECTION ds;
-					BITMAPINFOHEADER &bm = ds.dsBmih;
-					GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-					SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-					int iWidth = bm.biWidth;
-					int iHeight = bm.biHeight;
-					if (scenery[scenery_chose[i]].y + iHeight>=human.now_y+42)
-					TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				}
-				break;
-			}
-			case 1:	
-			{
-				for (int i = 0; i < 7; i++)
-				{
-					DIBSECTION ds;
-					BITMAPINFOHEADER &bm = ds.dsBmih;
-					GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-					SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-					int iWidth = bm.biWidth;
-					int iHeight = bm.biHeight;
-					if (scenery[scenery_chose[i]].y + iHeight<human.now_y+42)
-					TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				}
-				GetObject(h_person[stand_pic_num[1]], sizeof(ds), &ds);
-				SelectObject(hDCBitmap, h_person[stand_pic_num[1]]);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				TransparentBlt(buffer_hdc, human.now_x, human.now_y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				stand_pic_num[1]++;
-				if (stand_pic_num[1] == 10)
-				{
-					stand_pic_num[1] = 5;
-				}
-				for (int i = 0; i < 7; i++)
-				{
-					DIBSECTION ds;
-					BITMAPINFOHEADER &bm = ds.dsBmih;
-					GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-					SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-					int iWidth = bm.biWidth;
-					int iHeight = bm.biHeight;
-					if (scenery[scenery_chose[i]].y + iHeight>=human.now_y+42)
-					TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				}
-				break;
-			}
-			case 2:	
-			{
-				for (int i = 0; i < 7; i++)
-				{
-					DIBSECTION ds;
-					BITMAPINFOHEADER &bm = ds.dsBmih;
-					GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-					SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-					int iWidth = bm.biWidth;
-					int iHeight = bm.biHeight;
-					if (scenery[scenery_chose[i]].y + iHeight<human.now_y+42)
-					TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				}
-				GetObject(h_person[stand_pic_num[2]], sizeof(ds), &ds);
-				SelectObject(hDCBitmap, h_person[stand_pic_num[2]]);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				TransparentBlt(buffer_hdc, human.now_x, human.now_y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				stand_pic_num[2]++;
-				if (stand_pic_num[2] == 15)
-				{
-					stand_pic_num[2] = 10;
-				}
-				for (int i = 0; i < 7; i++)
-				{
-					DIBSECTION ds;
-					BITMAPINFOHEADER &bm = ds.dsBmih;
-					GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-					SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-					int iWidth = bm.biWidth;
-					int iHeight = bm.biHeight;
-					if (scenery[scenery_chose[i]].y + iHeight>=human.now_y+42)
-					TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				}
-				break;
-			}
-			case 3:	
-			{
-				for (int i = 0; i < 7; i++)
-				{
-					DIBSECTION ds;
-					BITMAPINFOHEADER &bm = ds.dsBmih;
-					GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-					SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-					int iWidth = bm.biWidth;
-					int iHeight = bm.biHeight;
-					if (scenery[scenery_chose[i]].y + iHeight<human.now_y+42)
-					TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				}
-				GetObject(h_person[stand_pic_num[3]], sizeof(ds), &ds);
-				SelectObject(hDCBitmap, h_person[stand_pic_num[3]]);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				TransparentBlt(buffer_hdc, human.now_x, human.now_y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				stand_pic_num[3]++;
-				if (stand_pic_num[3] == 20)
-				{
-					stand_pic_num[3] = 15;
-				}
-				for (int i = 0; i < 7; i++)
-				{
-					DIBSECTION ds;
-					BITMAPINFOHEADER &bm = ds.dsBmih;
-					GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-					SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-					int iWidth = bm.biWidth;
-					int iHeight = bm.biHeight;
-					if (scenery[scenery_chose[i]].y + iHeight>=human.now_y+42)
-					TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				}
-				break;
-			}
-			case 4:	
-			{
-				for (int i = 0; i < 7; i++)
-				{
-					DIBSECTION ds;
-					BITMAPINFOHEADER &bm = ds.dsBmih;
-					GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-					SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-					int iWidth = bm.biWidth;
-					int iHeight = bm.biHeight;
-					if (scenery[scenery_chose[i]].y + iHeight<human.now_y+42)
-					TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				}
-				GetObject(h_person[stand_pic_num[4]], sizeof(ds), &ds);
-				SelectObject(hDCBitmap, h_person[stand_pic_num[4]]);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				TransparentBlt(buffer_hdc, human.now_x, human.now_y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				stand_pic_num[4]++;
-				if (stand_pic_num[4] == 25)
-				{
-					stand_pic_num[4] = 20;
-				}
-				for (int i = 0; i < 7; i++)
-				{
-					DIBSECTION ds;
-					BITMAPINFOHEADER &bm = ds.dsBmih;
-					GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-					SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-					int iWidth = bm.biWidth;
-					int iHeight = bm.biHeight;
-					if (scenery[scenery_chose[i]].y + iHeight>=human.now_y+42)
-					TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				}
-				break;
-			}
-			case 5:	
-			{
-				for (int i = 0; i < 7; i++)
-				{
-					DIBSECTION ds;
-					BITMAPINFOHEADER &bm = ds.dsBmih;
-					GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-					SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-					int iWidth = bm.biWidth;
-					int iHeight = bm.biHeight;
-					if (scenery[scenery_chose[i]].y + iHeight<human.now_y+42)
-					TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				}
-				GetObject(h_person[stand_pic_num[5]], sizeof(ds), &ds);
-				SelectObject(hDCBitmap, h_person[stand_pic_num[5]]);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				TransparentBlt(buffer_hdc, human.now_x, human.now_y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				stand_pic_num[5]++;
-				if (stand_pic_num[5] == 30)
-				{
-					stand_pic_num[5] = 25;
-				}
-				for (int i = 0; i < 7; i++)
-				{
-					DIBSECTION ds;
-					BITMAPINFOHEADER &bm = ds.dsBmih;
-					GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-					SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-					int iWidth = bm.biWidth;
-					int iHeight = bm.biHeight;
-					if (scenery[scenery_chose[i]].y + iHeight>=human.now_y+42)
-					TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				}
-				break;
-			}
-			case 6:	
-			{
-				for (int i = 0; i < 7; i++)
-				{
-					DIBSECTION ds;
-					BITMAPINFOHEADER &bm = ds.dsBmih;
-					GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-					SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-					int iWidth = bm.biWidth;
-					int iHeight = bm.biHeight;
-					if (scenery[scenery_chose[i]].y + iHeight<human.now_y+42)
-					TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				}
-				GetObject(h_person[stand_pic_num[6]], sizeof(ds), &ds);
-				SelectObject(hDCBitmap, h_person[stand_pic_num[6]]);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				TransparentBlt(buffer_hdc, human.now_x, human.now_y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				stand_pic_num[6]++;
-				if (stand_pic_num[6] == 35)
-				{
-					stand_pic_num[6] = 30;
-				}
-				for (int i = 0; i < 7; i++)
-				{
-					DIBSECTION ds;
-					BITMAPINFOHEADER &bm = ds.dsBmih;
-					GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-					SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-					int iWidth = bm.biWidth;
-					int iHeight = bm.biHeight;
-					if (scenery[scenery_chose[i]].y + iHeight>=human.now_y+42)
-					TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				}
-				break;
-			}
-			case 7:	
-			{
-				for (int i = 0; i < 7; i++)
-				{
-					DIBSECTION ds;
-					BITMAPINFOHEADER &bm = ds.dsBmih;
-					GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-					SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-					int iWidth = bm.biWidth;
-					int iHeight = bm.biHeight;
-					if (scenery[scenery_chose[i]].y + iHeight<human.now_y+42)
-					TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				}
-				GetObject(h_person[stand_pic_num[7]], sizeof(ds), &ds);
-				SelectObject(hDCBitmap, h_person[stand_pic_num[7]]);
-				int iWidth = bm.biWidth;
-				int iHeight = bm.biHeight;
-				TransparentBlt(buffer_hdc, human.now_x, human.now_y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				stand_pic_num[7]++;
-				if (stand_pic_num[7] == 40)
-				{
-					stand_pic_num[7] = 35;
-				}
-				for (int i = 0; i < 7; i++)
-				{
-					DIBSECTION ds;
-					BITMAPINFOHEADER &bm = ds.dsBmih;
-					GetObject(scenery[scenery_chose[i]].pic, sizeof(ds), &ds);
-					SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
-					int iWidth = bm.biWidth;
-					int iHeight = bm.biHeight;
-					if (scenery[scenery_chose[i]].y + iHeight>=human.now_y+42)
-					TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
-				}
-				break;
-			}
-			}
-		}
-	}
+	if (human.state == 8)
+		human_stand(last_state, ds);
+	else
+		human_move(human.state, ds);
 	BitBlt(*dc, 0, 0, iWidth, iHeight, buffer_hdc, 0, 0, SRCCOPY);
-	/*if (t_hDc)
-	{
-		DeleteDC(t_hDc);
-	}
-	if (h_temp_bitmap)
-	{
-		DeleteObject(h_temp_bitmap);
-	}*/
 	CDialogEx::OnTimer(nIDEvent);
 }
 
@@ -890,3 +285,67 @@ void CGameDlg::OnRButtonDown(UINT nFlags, CPoint point)
 
 void CGameDlg::Clear_Window(HDC hdc) 
 { BitBlt(hdc, 0, 0, 640, 480, NULL, 0, 0, WHITENESS); }
+
+void CGameDlg::human_move(int status, DIBSECTION ds)
+{
+	paint_behind_human();
+	BITMAPINFOHEADER &bm = ds.dsBmih;
+	GetObject(h_person[pic_num[status]], sizeof(ds), &ds);
+	SelectObject(hDCBitmap, h_person[pic_num[status]]);
+	int iWidth = bm.biWidth;
+	int iHeight = bm.biHeight;
+	TransparentBlt(buffer_hdc, human.now_x, human.now_y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
+	pic_num[status]++;
+	if (pic_num[status] == 50+status*10)
+	{
+		pic_num[status] = 40+status*10;
+	}
+	last_state = status;
+	paint_before_human();
+}
+void CGameDlg::human_stand(int last_state, DIBSECTION ds)
+{
+	paint_behind_human();
+	BITMAPINFOHEADER &bm = ds.dsBmih;
+	GetObject(h_person[ stand_pic_num[last_state]], sizeof(ds), &ds);
+	SelectObject(hDCBitmap, h_person[ stand_pic_num[last_state]]);
+	int iWidth = bm.biWidth;
+	int iHeight = bm.biHeight;
+	TransparentBlt(buffer_hdc, human.now_x, human.now_y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
+	 stand_pic_num[last_state]++;
+	if ( stand_pic_num[last_state] == last_state * 5+5)
+	{
+		 stand_pic_num[last_state] =  last_state * 5;
+	}
+	paint_before_human();
+}
+
+void CGameDlg::paint_behind_human()
+{
+	for (int i = 0; i < 7; i++)
+	{
+		DIBSECTION ds_temp;
+		BITMAPINFOHEADER &bm = ds_temp.dsBmih;
+		GetObject(scenery[scenery_chose[i]].pic, sizeof(ds_temp), &ds_temp);
+		SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
+		int iWidth = bm.biWidth;
+		int iHeight = bm.biHeight;
+		if (scenery[scenery_chose[i]].y + iHeight<human.now_y + 42)
+			TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
+	}
+}
+
+void CGameDlg::paint_before_human()
+{
+	for (int i = 0; i < 7; i++)
+	{
+		DIBSECTION ds_temp;
+		BITMAPINFOHEADER &bm = ds_temp.dsBmih;
+		GetObject(scenery[scenery_chose[i]].pic, sizeof(ds_temp), &ds_temp);
+		SelectObject(hDCBitmap, scenery[scenery_chose[i]].pic);
+		int iWidth = bm.biWidth;
+		int iHeight = bm.biHeight;
+		if (scenery[scenery_chose[i]].y + iHeight >= human.now_y + 42)
+			TransparentBlt(buffer_hdc, scenery[scenery_chose[i]].x, scenery[scenery_chose[i]].y, iWidth, iHeight, hDCBitmap, 0, 0, RGB(255, 255, 255));
+	}
+}

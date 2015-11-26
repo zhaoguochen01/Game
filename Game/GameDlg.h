@@ -56,4 +56,8 @@ public:
 		);
 	afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
 	void Clear_Window(HDC hdc);
+	void human_move(int status, DIBSECTION ds);
+	void human_stand(int last_state, DIBSECTION ds);
+	void paint_behind_human();
+	void paint_before_human();
 };
