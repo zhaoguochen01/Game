@@ -9,14 +9,20 @@
 #include "Human.h"
 #include "Scenery.h"
 #include <Windows.h>
+#include <algorithm>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
+using namespace std;
+
 
 // 用于应用程序“关于”菜单项的 CAboutDlg 对话框
-
+static bool cmp(CScenery a, CScenery b)
+{
+	return a.y < b.y;
+}
 class CAboutDlg : public CDialogEx
 {
 public:
@@ -144,7 +150,7 @@ BOOL CGameDlg::OnInitDialog()
 	human.dis_x = 0;
 	human.dis_y = 0;
 	human.state = 8;
-
+	sort(scenery,scenery+96,cmp);
 	for (int i = 0; i < 96; i++)
 	{
 		scenery_chose[i] = rand() % 96;
